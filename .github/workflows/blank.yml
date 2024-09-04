@@ -24,10 +24,10 @@ jobs:
 
       - name: Deploy to Render
         run: |
-          curl -X POST "https://api.render.com/v1/services/YOUR_SERVICE_ID/deploys" \
+          curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
             -H "Accept: application/json" \
-            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
-            -d '{"serviceId": "YOUR_SERVICE_ID"}'
+            -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+            -d '{"triggered_by": "GitHub Actions"}'
         env:
           RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
 
